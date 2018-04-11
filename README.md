@@ -1,0 +1,2 @@
+# stockman
+Personal trading tool
