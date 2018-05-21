@@ -17,6 +17,7 @@
         <module>stockman-math</module>
         <module>stockman-web</module>
         <module>stockman-domain</module>
+        <module>stockman-moex-iss</module>
     </modules>
 
     <name>stockman-parent</name>
