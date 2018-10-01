@@ -20,8 +20,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <java.version>10</java.version>
-        <kotlin.version>1.2.41</kotlin.version>
+        <java.version>11</java.version>
+        <kotlin.version>1.2.71</kotlin.version>
 
         <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
         <javamoney.version>1.2.1</javamoney.version>
@@ -165,7 +165,7 @@
                         <toolchains>
                             <jdk>
                                 <version>${java.version}</version>
-                                <vendor>Oracle</vendor>
+                                <vendor>OpenJdk</vendor>
                             </jdk>
                         </toolchains>
                     </configuration>
@@ -173,20 +173,14 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>3.8.0</version>
                     <configuration>
-                        <compilerVersion>${java.version}</compilerVersion>
+                        <release>${java.version}</release>
+                        <!-- source & target are only needed by Idea, remove later -->
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <parameters>true</parameters>
                     </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.ow2.asm</groupId>
-                            <artifactId>asm</artifactId>
-                            <version>6.1.1</version> <!-- Use newer version of ASM for Java 10 -->
-                        </dependency>
-                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>

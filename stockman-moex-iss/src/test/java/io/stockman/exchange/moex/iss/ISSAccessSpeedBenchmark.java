@@ -1,8 +1,8 @@
 package io.stockman.exchange.moex.iss;
 
-import jdk.incubator.http.HttpClient;
-import jdk.incubator.http.HttpRequest;
-import jdk.incubator.http.HttpResponse;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
@@ -13,7 +13,7 @@ import java.net.URI;
 import java.nio.charset.Charset;
 
 import static io.stockman.exchange.moex.iss.ApiTransport.*;
-import static jdk.incubator.http.HttpResponse.BodyHandler.asString;
+import static java.net.http.HttpResponse.BodyHandlers.ofString;
 
 /**
  * Tests different HTTP and API params to find the most effective way to query MOEX ISS API.
@@ -108,7 +108,7 @@ public class ISSAccessSpeedBenchmark {
                 .build();
         try {
             Charset charset = transport.getCharset();
-            String responseBody = httpClient.send(request, asString(charset)).body();
+            String responseBody = httpClient.send(request, ofString(charset)).body();
             return responseBody;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -124,7 +124,7 @@ public class ISSAccessSpeedBenchmark {
                 .uri(URI.create(url))
                 .build();
         Charset charset = transport.getCharset();
-        String responseBody = httpClient.sendAsync(request, asString(charset))
+        String responseBody = httpClient.sendAsync(request, ofString(charset))
                 .thenApply(HttpResponse::body)
                 .join();
         return responseBody;
