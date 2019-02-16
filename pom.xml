@@ -120,6 +120,12 @@
                 <version>2.18.3</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>1.7.25</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -144,6 +150,10 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
         </dependency>
     </dependencies>
 
@@ -176,9 +186,6 @@
                     <version>3.8.0</version>
                     <configuration>
                         <release>${java.version}</release>
-                        <!-- source & target are only needed by Idea, remove later -->
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
                         <parameters>true</parameters>
                     </configuration>
                 </plugin>
