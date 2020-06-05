@@ -8,7 +8,7 @@ import javax.money.MonetaryAmount
  *
  * Created by maksim.alekseev on 03/05/2018
  */
-data class Transaction(
-        val amount: MonetaryAmount,
-        val date: LocalDate
+data class Transaction (
+    val amount: MonetaryAmount,
+    val date: LocalDate
 )
